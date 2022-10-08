@@ -1,22 +1,16 @@
 import { RiErrorWarningLine } from "react-icons/ri";
 import { AiFillPlayCircle } from "react-icons/ai";
 
-import Button from "../Button";
 import { useState, useEffect } from "react";
+import Button from "../Button";
 import axios from "../../apis/axiosClient";
 import tmdbReqs from "../../apis/tmdbReqs";
+
+import { IMovie } from "../../interface";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
-
-interface IMovie {
-	name: string;
-	backdrop_path: string;
-	overview: string;
-	title: string;
-	original_name: string;
-}
 
 export default function Banner() {
 	const [movie, setMovie] = useState<IMovie>();
@@ -41,7 +35,7 @@ export default function Banner() {
 					boxShadow: "inset 0 0 0 2000px rgba(0, 0, 0, 0.5)",
 				}}
 			>
-				<div className="px-24 pt-56 tracking-wide h-60">
+				<div className="px-24 flex-center-x flex-col tracking-wide h-full">
 					{movie && (
 						<>
 							<h1 className="pb-3 w-[46rem] text-6xl font-extrabold text-white drop-shadow-2xl">
