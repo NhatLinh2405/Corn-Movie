@@ -1,22 +1,23 @@
-import { Routes, Route } from "react-router-dom";
-
+import { Route, Routes } from "react-router-dom";
 import Layout from "./layouts";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Contact from "./pages/Contact";
-import TvSeries from "./pages/TvSeries";
-import Movies from "./pages/Movies";
+
+import { Home, NotFound, Contact, TvSeries, Movies, Detail } from "./pages";
+
 function App() {
 	return (
-		<Routes>
-			<Route path="/" element={<Layout />}>
-				<Route path="/" element={<Home />} />
-				<Route path="/tv-series" element={<TvSeries />} />
-				<Route path="/movies" element={<Movies />} />
-			</Route>
-			<Route path="contact" element={<Contact />} />
-			<Route path="*" element={<NotFound />} />
-		</Routes>
+		<>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route path="/" element={<Home />} />
+					<Route path="tv-series" element={<TvSeries />} />
+					<Route path="movies" element={<Movies />} />
+					<Route path="movie/:id" element={<Detail />} />
+					<Route path="tv/:id" element={<Detail />} />
+				</Route>
+				<Route path="contact" element={<Contact />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</>
 	);
 }
 

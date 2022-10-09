@@ -2,11 +2,7 @@ import Logo from "../assets/popcorn.png";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFacebook, BsGithub, BsInstagram } from "react-icons/bs";
 
-interface ISocial {
-	id: number;
-	link: string;
-	icon: JSX.Element;
-}
+import { ISocial } from "../interface";
 
 const socialsMedia: ISocial[] = [
 	{
@@ -33,47 +29,47 @@ const socialsMedia: ISocial[] = [
 
 export default function Footer() {
 	return (
-		<div className="bg-bgfooter h-96 w-full rounded-tr-xl rounded-tl-xl">
+		<div className="w-full bg-bgfooter h-96 rounded-tr-xl rounded-tl-xl">
 			<div className="px-16 py-10 text-white">
-				<div className="flex-center-y pb-5 mx-3">
-					<img src={Logo} className="object-contain w-16 cursor-pointer mr-3" alt="logo popcorn" />
-					<h1 className="tracking-wide text-5xl animate-pulse text-primary">Corn</h1>
+				<div className="pb-5 mx-3 cursor-pointer flex-center-y">
+					<img src={Logo} className="object-contain w-16 mr-3 cursor-pointer" alt="logo popcorn" />
+					<h1 className="text-5xl tracking-wide animate-pulse text-primary">Corn</h1>
 				</div>
 				<div className="grid grid-cols-4 gap-5 justify-items-center">
 					<div>
-						<div className="flex-center my-10">
+						<div className="my-10 flex-center">
 							{socialsMedia.map((social) => (
 								<a
 									key={social.id}
 									href={social.link}
 									target="_blank"
 									rel="noreferrer"
-									className="text-3xl mx-3 p-3 rounded-xl bg-slate-300 text-black hover:bg-red-500 hover:text-white"
+									className="p-3 mx-3 text-3xl text-black rounded-xl bg-slate-300 hover:bg-red-500 hover:text-white"
 								>
 									{social.icon}
 								</a>
 							))}
 						</div>
 					</div>
-					<div className="space-y-5 my-5 text-xl">
+					<div className="my-5 space-y-5 text-xl param">
 						<p>Help Center</p>
 						<p>Jobs</p>
 						<p>Cookie Preferences</p>
 					</div>
-					<div className="space-y-5 my-5 text-xl">
+					<div className="my-5 space-y-5 text-xl ">
 						<p>Gift Cards</p>
 						<p>Terms of Use</p>
 						<p>Corporate Information</p>
 					</div>
-					<div className="space-y-5 my-5 text-xl">
+					<div className="my-5 space-y-5 text-xl">
 						<p>Media Center</p>
 						<p>Privacy</p>
 						<p>Contact Us</p>
 					</div>
 				</div>
 			</div>
-			{/* <p className="text-center text-white text-xl">© 2022 Corn. All rights reserved.</p> */}
-			<p className="text-center text-white text-xl">
+			{/* <p className="text-xl text-center text-white">© 2022 Corn. All rights reserved.</p> */}
+			<p className="text-xl text-center text-white">
 				Created By <span className="text-primary"> Nhật Linh </span>| All Rights Reserved.
 			</p>
 		</div>

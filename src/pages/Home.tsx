@@ -6,14 +6,14 @@ export default function Home() {
 	return (
 		<div className="mb-10">
 			<Banner />
-			<MovieList title="Netflix Originals" fetchUrl={tmdbReqs.fetchNetflixOriginals} isLargeRow />
-			<MovieList title="Top Rated" fetchUrl={tmdbReqs.fetchTrending} />
-			<MovieList title="Trending Now" fetchUrl={tmdbReqs.fetchTopRated} />
-			<MovieList title="Action Movies" fetchUrl={tmdbReqs.fetchActionMovies} />
-			<MovieList title="Comedy Movies" fetchUrl={tmdbReqs.fetchComedyMovies} />
-			<MovieList title="Horror Movies" fetchUrl={tmdbReqs.fetchHorrorMovies} />
-			<MovieList title="Romance Movies" fetchUrl={tmdbReqs.fetchRomanceMovies} />
-			<MovieList title="Documentaries" fetchUrl={tmdbReqs.fetchDocumentaries} />
+			<MovieList title="Netflix Originals" getUrl={tmdbReqs.getNetflixOriginals} isLargeRow />
+			<MovieList title="Top Rated" getUrl={tmdbReqs.getTrending} />
+			<MovieList title="Trending Now" getUrl={tmdbReqs.getTopRated} />
+			<MovieList title="Action Movies" getUrl={tmdbReqs.getActionMovies} />
+			<MovieList title="Comedy Movies" getUrl={tmdbReqs.getComedyMovies} />
+			<MovieList title="Horror Movies" getUrl={tmdbReqs.getHorrorMovies} />
+			<MovieList title="Romance Movies" getUrl={tmdbReqs.getRomanceMovies} />
+			<MovieList title="Documentaries" getUrl={tmdbReqs.getDocumentaries} />
 		</div>
 	);
 }

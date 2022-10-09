@@ -68,4 +68,7 @@
 	.absolute-center-y {
 		@apply absolute left-0 -translate-y-1/2 top-1/2;
 	}
+	.param p {
+		@apply cursor-pointer hover:text-primary;
+	}
 }

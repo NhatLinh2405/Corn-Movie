@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 interface IButton {
-	Icon?: any;
 	name: string;
 	className: string;
 	link: boolean;
+	Icon: React.ElementType;
 	href: string;
 }
 

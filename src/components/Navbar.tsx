@@ -1,17 +1,14 @@
 import Logo from "../assets/popcorn.png";
 import Avatar from "../assets/avatar.gif";
+
 import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
-import { Link, NavLink } from "react-router-dom";
-
-// interface INavLink {
-// 	isActive?: boolean;
-// 	to: string;
-// 	children: any;
-// }
+import { INavLink } from "../interface";
 
 export default function Navbar() {
 	const [show, setShow] = useState<boolean>(false);
+	const location = useLocation();
 
 	const transitionNavBar = () => {
 		window.scrollY > 100 ? setShow(true) : setShow(false);
@@ -22,18 +19,13 @@ export default function Navbar() {
 		return () => window.removeEventListener("scroll", transitionNavBar);
 	}, []);
 
-	// const NavLinkStyle = ({ isActive, to, children }: INavLink) => {
-	// 	return (
-	// 		<NavLink
-	// 			to={to}
-	// 			className={`${
-	// 				isActive ? "text-primary" : "text-white"
-	// 			} hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
-	// 		>
-	// 			{children}
-	// 		</NavLink>
-	// 	);
-	// };
+	const NavLinkStyle = ({ to = "/", children }: INavLink) => {
+		return (
+			<NavLink to={to} className={({ isActive }) => (isActive ? "text-primary" : "text-white")}>
+				{children}
+			</NavLink>
+		);
+	};
 
 	return (
 		<div
@@ -46,28 +38,24 @@ export default function Navbar() {
 					<img src={Logo} alt="" className="object-contain w-20 cursor-pointer" />
 				</Link>
 
-				<div className="text-white flex-center space-x-10">
-					<NavLink to="/" className={({ isActive }) => (isActive ? "text-primary" : "text-white")}>
+				<div className="space-x-10 text-white flex-center">
+					<NavLink
+						to="/"
+						className={`${
+							location.pathname === "/" ? "text-primary" : "text-white"
+						} hover:text-white`}
+					>
 						<h4>Home</h4>
 					</NavLink>
-					<NavLink
-						to="/movies"
-						className={({ isActive }) => (isActive ? "text-primary" : "text-white")}
-					>
+					<NavLinkStyle to="/movies">
 						<h4>Movies</h4>
-					</NavLink>
-					<NavLink
-						to="/tv-series"
-						className={({ isActive }) => (isActive ? "text-primary" : "text-white")}
-					>
+					</NavLinkStyle>
+					<NavLinkStyle to="/tv-series">
 						<h4>TV Series</h4>
-					</NavLink>
-					<NavLink
-						to="/contact"
-						className={({ isActive }) => (isActive ? "text-primary" : "text-white")}
-					>
+					</NavLinkStyle>
+					<NavLinkStyle to="/contact">
 						<h4>Contact</h4>
-					</NavLink>
+					</NavLinkStyle>
 				</div>
 				<img src={Avatar} alt="" className="w-16 cursor-pointer" />
 			</div>
