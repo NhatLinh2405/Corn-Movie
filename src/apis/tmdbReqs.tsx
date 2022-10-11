@@ -1,11 +1,11 @@
 const API_KEY = "33f532ec9fe43cf7770a71c3828f5c83";
 
-export const category: any = ["movie", "tv"];
+export const category: string[] = ["movie", "tv"];
 
 const tmdbReqs = {
 	// https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>
 	getTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
-	getNetflixOriginals: `/discover/all?api_key=${API_KEY}&with_networks=213`,
+	getNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
 	getTopRated: `/movie/top_rated?api_key=${API_KEY}&language=en-US`,
 	getComedyMovies: `/discover/movie?api_key=${API_KEY}&with_genres=35`,
 	getHorrorMovies: `/discover/movie?api_key=${API_KEY}&with_genres=27`,

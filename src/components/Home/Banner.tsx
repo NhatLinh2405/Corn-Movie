@@ -9,16 +9,16 @@ import { IMovie } from "../../interface";
 
 export default function Banner() {
 	const [movie, setMovie] = useState<IMovie>();
+
 	useEffect(() => {
 		const getMovie = async () => {
-			const res = await axiosClient.get(tmdbReqs.getNetflixOriginals);
+			const res = await axiosClient.get(tmdbReqs.getTrending);
 			setMovie(res.data.results[Math.floor(Math.random() * res.data.results.length - 1)]);
 		};
 		getMovie();
 	}, []);
 
 	const URL_IMG = movie && `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
-
 	return (
 		<div
 			className={`relative w-full h-[700px]`}
