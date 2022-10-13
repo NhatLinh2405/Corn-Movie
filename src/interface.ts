@@ -7,6 +7,8 @@ export interface IMovie {
 	original_name: string;
 	poster_path: string;
 	media_type: string;
+	popularity: number;
+	vote_average: number;
 }
 
 export interface ISocial {
