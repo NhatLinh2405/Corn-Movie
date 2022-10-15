@@ -57,7 +57,9 @@ export default function Navbar() {
 						<h4>Contact</h4>
 					</NavLinkStyle>
 				</div>
-				<img src={Avatar} alt="" className="w-16 cursor-pointer" />
+				<Link to="/login">
+					<img src={Avatar} alt="" className="w-16 cursor-pointer" />
+				</Link>
 			</div>
 		</div>
 	);

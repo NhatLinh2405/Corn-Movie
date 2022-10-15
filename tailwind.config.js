@@ -10,6 +10,7 @@ module.exports = {
 				bannerImg: "url('./assets/banner.jpg')",
 				bgfooter: "url('./assets/bgFooter.jpg')",
 				bgContact: "url('./assets/bgContact.jpg')",
+				bgLogin: "url('./assets/bgLogin.jpg')",
 			},
 			boxShadow: {
 				pop: "0 .5rem 1.5rem rgba(0,0,0,.1)",
