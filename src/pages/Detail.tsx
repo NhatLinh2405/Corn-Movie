@@ -2,28 +2,21 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosClient from "./../apis/axiosClient";
 import tmdbReqs from "./../apis/tmdbReqs";
-import { IMovie } from "../interface";
+import { IMovie } from "../interfaces";
 
 export default function Detail() {
-	const { id } = useParams<{ id: string }>();
-	// const { id, cate } = useParams<{ id: string; cate: any }>();
+	const { category, id } = useParams<{ id: string; category: string }>();
+	console.log(category);
 	const [movie, setMovie] = useState<IMovie>();
 
 	useEffect(() => {
 		const getDetail = async () => {
 			const res = await axiosClient.get(tmdbReqs.getMovieDetail(id));
+			// const res = await axiosClient.get(tmdbReqs.getDetail(id, category));
 			setMovie(res.data);
 		};
 		getDetail();
-	}, [id]);
-
-	// useEffect(() => {
-	// 	const getDetail = async () => {
-	// 		const res = await axiosClient.get(tmdbReqs.getDetails(id, cate));
-	// 		setMovie(res.data);
-	// 	};
-	// 	getDetail();
-	// }, [id, cate]);
+	}, [id, category]);
 
 	const URL_IMG = movie && `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
 	return (

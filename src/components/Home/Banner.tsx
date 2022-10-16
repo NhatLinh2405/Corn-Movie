@@ -5,7 +5,7 @@ import Button from "../Button";
 import axiosClient from "../../apis/axiosClient";
 import tmdbReqs from "../../apis/tmdbReqs";
 
-import { IMovie } from "../../interface";
+import { IMovie } from "../../interfaces";
 
 export default function Banner() {
 	const [movie, setMovie] = useState<IMovie>();

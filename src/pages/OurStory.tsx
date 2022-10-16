@@ -15,15 +15,13 @@ export default function OurStory() {
 			<div className="w-full h-screen z-[1] bg-[rgba(0,0,0,0.4)]">
 				<div className="">
 					<div className="justify-between px-24 py-2 flex-center-y">
-						<Link to="/" onClick={() => setSignIn(true)}>
+						<Link to="/" onClick={() => setSignIn(false)}>
 							<img src={Logo} alt="" className="object-contain w-20 cursor-pointer" />
 						</Link>
-						{!signIn ? (
-							<button onClick={() => setSignIn(true)}>
+						{!signIn && (
+							<Link to="/login" onClick={() => setSignIn(true)}>
 								<img src={Avatar} alt="" className="w-16 cursor-pointer" />
-							</button>
-						) : (
-							""
+							</Link>
 						)}
 						{/* <Link to="/login">
 							<img src={Avatar} alt="" className="w-16 cursor-pointer" />
@@ -54,8 +52,10 @@ export default function OurStory() {
 											onClick={() => setSignIn(true)}
 											className="px-8 text-2xl font-medium text-white border-none outline-none bg-primary"
 										>
-											Get Started
-											<AiOutlineSend className="inline-block ml-4 text-3xl" />
+											<Link to="/login">
+												Get Started
+												<AiOutlineSend className="inline-block ml-4 text-3xl" />
+											</Link>
 										</button>
 									</form>
 								</div>

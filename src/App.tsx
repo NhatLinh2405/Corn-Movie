@@ -8,13 +8,18 @@ function App() {
 	return (
 		<>
 			{!user ? (
-				<OurStory />
+				<>
+					<OurStory />
+					{/* <Routes>
+						<Route path="/login" element={<Login />} />
+					</Routes> */}
+				</>
 			) : (
 				<Routes>
 					<>
 						<Route path="/" element={<Layout />}>
 							<Route path="/" element={<Home />} />
-							<Route path="/login" element={<Login />} />
+							{/* <Route path="/login" element={<Login />} /> */}
 							<Route path="tv-series" element={<TvSeries />} />
 							<Route path="movies" element={<Movies />} />
 							<Route path="movie/:id" element={<Detail />} />

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
 export default function Login() {
-	const register = (e: any) => {
-		e.preventDefault();
-	};
-	const signIn = (e: any) => {
-		e.preventDefault();
-	};
+	// const register = (e: any) => {
+	// 	e.preventDefault();
+	// };
+	// const signIn = (e: any) => {
+	// 	e.preventDefault();
+	// };
 	return (
 		<div className="p-5 mx-auto bg-black w-[500px]">
 			<form action="" className="flex flex-col">

@@ -14,10 +14,17 @@ export interface IMovie {
 export interface ISocial {
 	id: number;
 	link: string;
-	icon: React.ReactNode | JSX.Element;
+	name: string;
+	img?: string;
+	icon?: React.ReactNode | JSX.Element;
 }
 
 export interface INavLink {
 	to: string;
 	children: React.ReactNode;
+}
+
+export interface IDetail {
+	id: string | undefined;
+	cate: number;
 }

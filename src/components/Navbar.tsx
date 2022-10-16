@@ -4,7 +4,7 @@ import Avatar from "../assets/avatar.gif";
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import { INavLink } from "../interface";
+import { INavLink } from "../interfaces";
 
 export default function Navbar() {
 	const [show, setShow] = useState<boolean>(false);

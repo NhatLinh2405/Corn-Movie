@@ -1,8 +1,16 @@
 import Linh from "../assets/NhatLinh.jpg";
 import Header from "../layouts/Header";
+import { ISocial } from "../interfaces";
+
+interface IInfos {
+	name: string;
+	img: string;
+	role: string;
+	contact: ISocial[];
+}
 
 export default function Contact() {
-	const info: any = [
+	const info: IInfos[] = [
 		{
 			name: "Nguyễn Nhật Linh",
 			role: "Frontend Developer",
@@ -10,26 +18,31 @@ export default function Contact() {
 			contact: [
 				{
 					id: 1,
+					name: "Facebook",
 					link: "https://www.facebook.com/lays.linh.96",
 					img: "https://img.icons8.com/bubbles/100/000000/facebook-new.png",
 				},
 				{
 					id: 2,
+					name: "Youtube",
 					link: "https://www.youtube.com/channel/UCTLzNTO_crOhiyFZFdhotDA",
 					img: "https://img.icons8.com/bubbles/100/000000/youtube-squared.png",
 				},
 				{
 					id: 3,
+					name: "Github",
 					link: "https://github.com/NhatLinh2405",
 					img: "https://img.icons8.com/bubbles/100/000000/github.png",
 				},
 				{
 					id: 4,
+					name: "Instagram",
 					link: "https://www.instagram.com/l.i.n.h.11/",
 					img: "https://img.icons8.com/bubbles/100/000000/instagram.png",
 				},
 				{
 					id: 5,
+					name: "Gmail",
 					link: "mailto:nhatlinh240501@gmail.com",
 					img: "https://img.icons8.com/bubbles/100/000000/apple-mail.png",
 				},
@@ -44,7 +57,7 @@ export default function Contact() {
 					<Header />
 					<div className="text-white flex-center">
 						<div className="mt-36 flex-center">
-							{info.map((item: any) => (
+							{info.map((item: IInfos) => (
 								<div className="flex-center" key={item.name}>
 									<img
 										className="object-cover border-2 rounded-full shadow-pop border-slate-200 w-[300px]"
@@ -61,7 +74,7 @@ export default function Contact() {
 											</h1>
 										</div>
 										<div className="flex">
-											{item.contact.map((item: any) => (
+											{item.contact.map((item: ISocial) => (
 												<a
 													href={item.link}
 													target="_blank"
@@ -71,7 +84,7 @@ export default function Contact() {
 													<img
 														className="cursor-pointer text-9xl hover:scale-110"
 														src={item.img}
-														alt={item.id}
+														alt={item.name}
 													/>
 												</a>
 											))}

@@ -6,7 +6,9 @@ import { FreeMode, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import { IMovie } from "../../interface";
+import { category } from "../../apis/tmdbReqs";
+
+import { IMovie } from "../../interfaces";
 import { Link } from "react-router-dom";
 
 interface IProps {
@@ -17,8 +19,9 @@ interface IProps {
 
 export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 	const [movies, setMovies] = useState<[]>([]);
-
-	const base_url = "https://image.tmdb.org/t/p/original";
+	// console.log(movies);
+	// 	console.log(category[category], getUrl);
+	const img_url = "https://image.tmdb.org/t/p/original";
 
 	useEffect(() => {
 		const getData = async () => {
@@ -59,7 +62,7 @@ export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 															? "w-72 h-96 object-cover"
 															: "w-72 h-80 object-cover"
 													}  hover:scale-105 cursor-pointer`}
-													src={`${base_url}${
+													src={`${img_url}${
 														isLargeRow ? movie.poster_path : movie.poster_path
 													}`}
 													alt={movie.name}

@@ -2,27 +2,31 @@ import Logo from "../assets/popcorn.png";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFacebook, BsGithub, BsInstagram } from "react-icons/bs";
 
-import { ISocial } from "../interface";
+import { ISocial } from "../interfaces";
 
 const socialsMedia: ISocial[] = [
 	{
 		id: 1,
 		icon: <BsFacebook />,
+		name: "Facebook",
 		link: "https://www.facebook.com/lays.linh.96",
 	},
 	{
 		id: 2,
 		icon: <BsInstagram />,
+		name: "Instagram",
 		link: "https://www.instagram.com/l.i.n.h.11/",
 	},
 	{
 		id: 3,
 		icon: <BsGithub />,
+		name: "Github",
 		link: "https://github.com/NhatLinh2405",
 	},
 	{
 		id: 4,
 		icon: <AiOutlineMail />,
+		name: "Gmail",
 		link: "mailto:nhatlinh240501@gmail.com",
 	},
 ];
