@@ -54,7 +54,6 @@ export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 										style={{ width: "auto", height: "auto", overflow: "hidden" }}
 									>
 										<>
-											{console.log(movie)}
 											<Link
 												to={
 													movie.media_type === "tv"

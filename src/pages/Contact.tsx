@@ -1,13 +1,6 @@
 import Linh from "../assets/NhatLinh.jpg";
 import Header from "../layouts/Header";
-import { ISocial } from "../interfaces";
-
-interface IInfos {
-	name: string;
-	img: string;
-	role: string;
-	contact: ISocial[];
-}
+import { ISocial, IInfos } from "../interfaces";
 
 export default function Contact() {
 	const info: IInfos[] = [
@@ -51,56 +44,52 @@ export default function Contact() {
 	];
 
 	return (
-		<>
-			<div className="h-screen bg-cover bg-bgContact">
-				<div className="w-full h-screen z-[1] bg-[rgba(0,0,0,0.4)]">
-					<Header />
-					<div className="text-white flex-center">
-						<div className="mt-36 flex-center">
-							{info.map((item: IInfos) => (
-								<div className="flex-center" key={item.name}>
-									<img
-										className="object-cover border-2 rounded-full shadow-pop border-slate-200 w-[300px]"
-										src={item.img}
-										alt={item.name}
-									/>
-									<div className="ml-10">
-										<div className="my-5 space-y-5">
-											<h2 className="text-center underline underline-offset-8 decoration-primary">
-												{item.name}
-											</h2>
-											<h1 className="mt-2 text-xl font-bold text-center">
-												{item.role}
-											</h1>
-										</div>
-										<div className="flex">
-											{item.contact.map((item: ISocial) => (
-												<a
-													href={item.link}
-													target="_blank"
-													rel="noreferrer"
-													key={item.id}
-												>
-													<img
-														className="cursor-pointer text-9xl hover:scale-110"
-														src={item.img}
-														alt={item.name}
-													/>
-												</a>
-											))}
-										</div>
+		<div className="h-screen bg-cover bg-bgContact">
+			<div className="w-full h-screen z-[1] bg-[rgba(0,0,0,0.4)]">
+				<Header />
+				<div className="text-white flex-center">
+					<div className="mt-36 flex-center">
+						{info.map((item: IInfos) => (
+							<div className="flex-center" key={item.name}>
+								<img
+									className="object-cover border-2 rounded-full shadow-pop border-slate-200 w-[300px]"
+									src={item.img}
+									alt={item.name}
+								/>
+								<div className="ml-10">
+									<div className="my-5 space-y-5">
+										<h2 className="text-center underline underline-offset-8 decoration-primary">
+											{item.name}
+										</h2>
+										<h1 className="mt-2 text-xl font-bold text-center">{item.role}</h1>
+									</div>
+									<div className="flex">
+										{item.contact.map((item: ISocial) => (
+											<a
+												href={item.link}
+												target="_blank"
+												rel="noreferrer"
+												key={item.id}
+											>
+												<img
+													className="cursor-pointer text-9xl hover:scale-110"
+													src={item.img}
+													alt={item.name}
+												/>
+											</a>
+										))}
 									</div>
 								</div>
-							))}
-						</div>
+							</div>
+						))}
 					</div>
-					<p className="mt-10 text-xl font-medium text-center text-white">
-						Created By
-						<span className="underline underline-offset-8 text-primary"> Nhật Linh </span>| All
-						Rights Reserved.
-					</p>
 				</div>
+				<p className="mt-10 text-xl font-medium text-center text-white">
+					Created By
+					<span className="underline underline-offset-8 text-primary"> Nhật Linh </span>| All Rights
+					Reserved.
+				</p>
 			</div>
-		</>
+		</div>
 	);
 }

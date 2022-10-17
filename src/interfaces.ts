@@ -31,3 +31,10 @@ export interface IButton {
 	Icon: React.ElementType;
 	href: string;
 }
+
+export interface IInfos {
+	name: string;
+	img: string;
+	role: string;
+	contact: ISocial[];
+}
