@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../../apis/axiosClient";
 
+import { IMovie } from "../../interfaces";
+import { Link } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
-
-import { category } from "../../apis/tmdbReqs";
-
-import { IMovie } from "../../interfaces";
-import { Link } from "react-router-dom";
 
 interface IProps {
 	title: string;
@@ -19,8 +17,6 @@ interface IProps {
 
 export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 	const [movies, setMovies] = useState<[]>([]);
-	// console.log(movies);
-	// 	console.log(category[category], getUrl);
 	const img_url = "https://image.tmdb.org/t/p/original";
 
 	useEffect(() => {
@@ -53,9 +49,19 @@ export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 							(movie: IMovie) =>
 								((isLargeRow && movie.poster_path) ||
 									(!isLargeRow && movie.backdrop_path)) && (
-									<SwiperSlide key={movie.id} style={{ width: "auto", height: "auto" }}>
+									<SwiperSlide
+										key={movie.id}
+										style={{ width: "auto", height: "auto", overflow: "hidden" }}
+									>
 										<>
-											<Link to={`/movie/${movie.id}`}>
+											{console.log(movie)}
+											<Link
+												to={
+													movie.media_type === "tv"
+														? `/tv/${movie.id}`
+														: `/movie/${movie.id}`
+												}
+											>
 												<img
 													className={`${
 														isLargeRow

@@ -4,7 +4,11 @@ import Layout from "./layouts";
 import { Home, NotFound, Contact, TvSeries, Movies, Detail, OurStory, Login } from "./pages";
 
 function App() {
-	const user = null;
+	const user = [
+		{
+			name: "Linh",
+		},
+	];
 	return (
 		<>
 			{!user ? (
@@ -22,8 +26,7 @@ function App() {
 							{/* <Route path="/login" element={<Login />} /> */}
 							<Route path="tv-series" element={<TvSeries />} />
 							<Route path="movies" element={<Movies />} />
-							<Route path="movie/:id" element={<Detail />} />
-							<Route path="tv/:id" element={<Detail />} />
+							<Route path=":category/:id" element={<Detail />} />
 						</Route>
 						<Route path="contact" element={<Contact />} />
 						<Route path="*" element={<NotFound />} />

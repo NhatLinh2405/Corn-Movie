@@ -24,7 +24,10 @@ export interface INavLink {
 	children: React.ReactNode;
 }
 
-export interface IDetail {
-	id: string | undefined;
-	cate: number;
+export interface IButton {
+	name: string;
+	className: string;
+	link: boolean;
+	Icon: React.ElementType;
+	href: string;
 }

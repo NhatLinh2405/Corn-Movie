@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom";
-
-interface IButton {
-	name: string;
-	className: string;
-	link: boolean;
-	Icon: React.ElementType;
-	href: string;
-}
+import { IButton } from "../interfaces";
 
 export default function Button({ className, name, Icon, link, href }: IButton) {
 	return link ? (

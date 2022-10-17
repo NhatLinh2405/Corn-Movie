@@ -1,5 +1,3 @@
-import { IDetail } from "../interfaces";
-
 const API_KEY = "33f532ec9fe43cf7770a71c3828f5c83";
 
 export const category: string[] = ["movie", "tv"];
@@ -17,18 +15,7 @@ const tmdbReqs = {
 	getDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
 	getActionMovies: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
 
-	getDetail: ({ id, cate }: IDetail) => `/${category[cate]}/${id}?api_key=${API_KEY}&language=en-US`,
-
-	getMovieDetail: (id: string | undefined) => `/movie/${id}?api_key=${API_KEY}&language=en-US`,
-	getTvDetail: (id: string | undefined) => `/tv/${id}?api_key=${API_KEY}&language=en-US`,
-
-	// getDetails: (id: string | undefined, cate: any) => {
-	// 	if (cate === "movie") {
-	// 		return `/movie/${id}?api_key=${API_KEY}&language=en-US`;
-	// 	} else {
-	// 		return `/tv/${id}?api_key=${API_KEY}&language=en-US`;
-	// 	}
-	// },
+	getDetail: (id: string, category: string) => `/${category}/${id}?api_key=${API_KEY}&language=en-US`,
 };
 
 export default tmdbReqs;

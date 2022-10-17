@@ -32,10 +32,10 @@ export default function TvSeries() {
 	const pageCount = Math.ceil(totalPage / 10);
 
 	const currentPageData = movies.slice(0, offset + 20).map((movie: IMovie) => (
-		<Link to={`/tv/${movie.id}`}>
+		<Link className="overflow-hidden" to={`/tv/${movie.id}`}>
 			<div
 				key={movie.id}
-				className={`relative cursor-pointer h-80 w-full `}
+				className={`relative cursor-pointer h-80 w-full hover:scale-105`}
 				style={{
 					backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
 					objectFit: "contain",

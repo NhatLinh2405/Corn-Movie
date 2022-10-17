@@ -32,10 +32,10 @@ export default function Movies() {
 	const pageCount = Math.ceil(totalPage / 10);
 
 	const currentPageData = movies.slice(0, offset + 20).map((movie: IMovie) => (
-		<Link to={`/movie/${movie.id}`}>
+		<Link className="overflow-hidden" to={`/movie/${movie.id}`}>
 			<div
 				key={movie.id}
-				className={`relative cursor-pointer h-80 w-full `}
+				className={`relative hover:scale-105 cursor-pointer h-80 w-full`}
 				style={{
 					backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
 					objectFit: "contain",
@@ -57,7 +57,11 @@ export default function Movies() {
 
 	return (
 		<>
-			<img src={backgroundMovie} className="h-[70vh] w-full object-cover bg-[rgba(0,0,0,0.4)]" alt="" />
+			<img
+				src={backgroundMovie}
+				className="h-[70vh] w-full object-cover bg-[rgba(0,0,0,0.4)] brightness-75"
+				alt=""
+			/>
 			<div className="px-10 py-5">
 				<div className="grid grid-cols-5 gap-3">{currentPageData}</div>
 				<div className="p-5 text-white flex-center">

@@ -6,14 +6,13 @@ import { IMovie } from "../interfaces";
 
 export default function Detail() {
 	const { category, id } = useParams<{ id: string; category: string }>();
-	console.log(category);
 	const [movie, setMovie] = useState<IMovie>();
-
 	useEffect(() => {
 		const getDetail = async () => {
-			const res = await axiosClient.get(tmdbReqs.getMovieDetail(id));
-			// const res = await axiosClient.get(tmdbReqs.getDetail(id, category));
-			setMovie(res.data);
+			if (id && category) {
+				const res = await axiosClient.get(tmdbReqs.getDetail(id, category));
+				setMovie(res.data);
+			}
 		};
 		getDetail();
 	}, [id, category]);
