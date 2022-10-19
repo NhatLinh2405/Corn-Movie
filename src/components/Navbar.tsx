@@ -29,7 +29,7 @@ export default function Navbar() {
 
 	return (
 		<div
-			className={`fixed top-0 w-full z-10 shadow-pop  ${
+			className={`fixed top-0 w-full z-[3] shadow-pop  ${
 				show === true ? "bg-black" : "bg-transparent"
 			} `}
 		>
