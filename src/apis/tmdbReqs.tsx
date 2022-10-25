@@ -1,6 +1,6 @@
 const API_KEY = "33f532ec9fe43cf7770a71c3828f5c83";
 
-export const category: string[] = ["movie", "tv"];
+export const category: string[] = ["tv", "movie"];
 
 const tmdbReqs = {
 	getTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,

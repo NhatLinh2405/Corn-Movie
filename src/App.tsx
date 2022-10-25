@@ -1,12 +1,10 @@
-import { Route, Routes } from "react-router-dom";
 import Layout from "./layouts";
-
-import { Home, NotFound, Contact, TvSeries, Movies, Detail, OurStory, Login } from "./pages";
 import { useEffect } from "react";
 import { auth } from "./apis/firebase";
-
+import { Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./app/store";
 import { logout, login, selectUser } from "./reducers/userSlice";
+import { Home, NotFound, Contact, TvSeries, Movies, Detail, OurStory, Profile } from "./pages";
 
 function App() {
 	const dispatch = useAppDispatch();
@@ -24,7 +22,8 @@ function App() {
 				dispatch(logout());
 			}
 		});
-		subscribe();
+		return subscribe;
+		// subscribe();
 	}, [dispatch]);
 
 	return (
@@ -40,6 +39,7 @@ function App() {
 							<Route path="movies" element={<Movies />} />
 							<Route path=":category/:id" element={<Detail />} />
 						</Route>
+						<Route path="profile" element={<Profile />} />
 						<Route path="contact" element={<Contact />} />
 						<Route path="*" element={<NotFound />} />
 					</>

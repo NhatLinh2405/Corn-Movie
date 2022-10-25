@@ -2,8 +2,7 @@ import Logo from "../assets/popcorn.png";
 import Avatar from "../assets/avatar.gif";
 
 import { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { INavLink } from "../interfaces";
 
 export default function Navbar() {
@@ -30,7 +29,7 @@ export default function Navbar() {
 	return (
 		<div
 			className={`fixed top-0 w-full z-[3] shadow-pop  ${
-				show === true ? "bg-black" : "bg-transparent"
+				show === true || location.pathname === "/profile" ? "bg-black" : "bg-transparent"
 			} `}
 		>
 			<div className="justify-between px-24 py-2 flex-center-y">
@@ -57,7 +56,8 @@ export default function Navbar() {
 						<h4>Contact</h4>
 					</NavLinkStyle>
 				</div>
-				<Link to="/login">
+
+				<Link to="/profile">
 					<img src={Avatar} alt="" className="w-16 cursor-pointer" />
 				</Link>
 			</div>

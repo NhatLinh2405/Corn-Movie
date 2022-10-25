@@ -61,8 +61,8 @@ export default function Movies() {
 				className="h-[70vh] w-full object-cover bg-[rgba(0,0,0,0.4)] brightness-75"
 				alt=""
 			/>
-			<div className="px-10 py-5">
-				<div className="grid grid-cols-5 gap-3">{currentPageData}</div>
+			<div className="px-10 py-5 ">
+				<div className="grid grid-cols-5 gap-3 mb-8">{currentPageData}</div>
 				<div className="p-5 text-white flex-center">
 					<ReactPaginate
 						breakLabel="..."

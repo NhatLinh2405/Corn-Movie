@@ -4,11 +4,32 @@ import { auth } from "../apis/firebase";
 import { AiFillUnlock, AiOutlineMail } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 
 export default function Login() {
+	const signInWithFacebook = () => {
+		const provider = new FacebookAuthProvider();
+		provider.addScope("user_birthday");
+		provider.setCustomParameters({
+			display: "popup",
+		});
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				// const email = error.customData.email;
+				// const credential = FacebookAuthProvider.credentialFromError(error);
+				console.log(error.message);
+				// console.log(email);
+				// console.log(credential);
+			});
+	};
+
 	const emailRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
+	const navigate = useNavigate();
 
 	const register = (e: React.MouseEvent) => {
 		e.preventDefault();
@@ -18,6 +39,7 @@ export default function Login() {
 				.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
 				.then((authUser) => {
 					console.log(authUser);
+					navigate("/");
 				})
 				.catch((error) => {
 					alert(error.message);
@@ -29,6 +51,7 @@ export default function Login() {
 		auth.signInWithEmailAndPassword(emailRef.current!.value, passwordRef.current!.value)
 			.then((authUser) => {
 				console.log(authUser);
+				navigate("/");
 			})
 			.catch((error) => {
 				alert(error.message);
@@ -73,7 +96,7 @@ export default function Login() {
 				</form>
 				<div className="mt-5 text-center">
 					Don't have an account?{" "}
-					<Link onClick={register} to="/">
+					<Link className="underline underline-offset-4 " onClick={register} to="/">
 						Create a new account
 					</Link>
 				</div>
@@ -83,6 +106,7 @@ export default function Login() {
 						<Link
 							className="flex-center w-[50px] h-[50px] rounded-full bg-black text-white hover:scale-110"
 							to="/"
+							onClick={signInWithFacebook}
 						>
 							<BsFacebook />
 						</Link>

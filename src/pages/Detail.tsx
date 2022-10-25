@@ -12,6 +12,7 @@ export default function Detail() {
 			if (id && category) {
 				const res = await axiosClient.get(tmdbReqs.getDetail(id, category));
 				setMovie(res.data);
+				window.scrollTo(0, 0);
 			}
 		};
 		getDetail();

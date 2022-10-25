@@ -40,25 +40,24 @@ export default function Banner() {
 						<div className="py-3 ">
 							<h2 className="text-2xl text-white line-clamp-3 w-[44rem]">{movie.overview}</h2>
 						</div>
+						<div className="flex gap-4 pt-4">
+							<Button
+								name="Watch Now"
+								Icon={AiFillPlayCircle}
+								link
+								href={`/a`}
+								className="bg-white hover:border-2 hover:border-white hover:bg-transparent hover:text-white"
+							/>
+							<Button
+								name="More Info"
+								Icon={RiErrorWarningLine}
+								link
+								href={movie.media_type === "tv" ? `/tv/${movie.id}` : `/movie/${movie.id}`}
+								className="text-white bg-transparent border-2 border-white hover:bg-red-600 hover:text-white"
+							/>
+						</div>
 					</>
 				)}
-
-				<div className="flex gap-4 pt-4">
-					<Button
-						name="Watch Now"
-						Icon={AiFillPlayCircle}
-						link
-						href={`/a`}
-						className="bg-white hover:border-2 hover:border-white hover:bg-transparent hover:text-white"
-					/>
-					<Button
-						name="More Info"
-						Icon={RiErrorWarningLine}
-						link
-						href={`/movie/${movie?.id}`}
-						className="text-white bg-transparent border-2 border-white hover:bg-red-600 hover:text-white"
-					/>
-				</div>
 			</div>
 		</div>
 	);
