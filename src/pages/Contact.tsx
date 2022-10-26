@@ -1,9 +1,9 @@
 import Linh from "../assets/NhatLinh.jpg";
 import Header from "../layouts/Header";
-import { ISocial, IInfos } from "../interfaces";
+import { ISocial, IInfo } from "../interfaces";
 
 export default function Contact() {
-	const info: IInfos[] = [
+	const info: IInfo[] = [
 		{
 			name: "Nguyễn Nhật Linh",
 			role: "Frontend Developer",
@@ -49,7 +49,7 @@ export default function Contact() {
 				<Header />
 				<div className="text-white flex-center">
 					<div className="mt-36 flex-center">
-						{info.map((item: IInfos) => (
+						{info.map((item: IInfo) => (
 							<div className="flex-center" key={item.name}>
 								<img
 									className="object-cover border-2 rounded-full shadow-pop border-slate-200 w-[300px]"

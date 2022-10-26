@@ -10,6 +10,14 @@ export default function Movies() {
 	const [movies, setMovies] = useState<[]>([]);
 	const [page, setPage] = useState<number>(1);
 	const [totalPage, setTotalPage] = useState<number>(0);
+
+	// search by keywords
+	const [keyword, setKeyword] = useState<string>("");
+
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setKeyword(e.target.value);
+	};
+	console.log(keyword);
 	useEffect(() => {
 		const getData = async () => {
 			const res = await axiosClient.get(tmdbReqs.getTrendingMovie, {
@@ -61,6 +69,18 @@ export default function Movies() {
 				className="h-[70vh] w-full object-cover bg-[rgba(0,0,0,0.4)] brightness-75"
 				alt=""
 			/>
+			<form
+				action=""
+				className="absolute flex-col w-1/2 space-y-3 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 flex-center"
+			>
+				<input
+					type="text"
+					className="w-full h-12 px-4 bg-white rounded-lg shadow-pop focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+					placeholder="Search for a movie, tv series, person..."
+					onChange={handleSearchChange}
+					value={keyword}
+				/>
+			</form>
 			<div className="px-10 py-5 ">
 				<div className="grid grid-cols-5 gap-3 mb-8">{currentPageData}</div>
 				<div className="p-5 text-white flex-center">

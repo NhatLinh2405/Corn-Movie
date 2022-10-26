@@ -9,6 +9,8 @@ export interface IMovie {
 	media_type: string;
 	popularity: number;
 	vote_average: number;
+	genres: [];
+	release_date: string;
 }
 
 export interface ISocial {
@@ -32,9 +34,21 @@ export interface IButton {
 	href: string;
 }
 
-export interface IInfos {
+export interface IInfo {
 	name: string;
 	img: string;
 	role: string;
 	contact: ISocial[];
+}
+
+export interface IVideos {
+	name: string;
+	id: string;
+	key: string;
+}
+
+export interface ICasts {
+	name: string;
+	id: string;
+	profile_path: string;
 }

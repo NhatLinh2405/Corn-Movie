@@ -6,7 +6,7 @@ export default function Home() {
 	return (
 		<div className="mb-10">
 			<Banner />
-			<MovieList title="Netflix Originals" getUrl={tmdbReqs.getNetflixOriginals} isLargeRow />
+			<MovieList title="Netflix Originals" isTv getUrl={tmdbReqs.getNetflixOriginals} isLargeRow />
 			<MovieList title="Top Rated" getUrl={tmdbReqs.getTrending} />
 			<MovieList title="Trending Now" getUrl={tmdbReqs.getTopRated} />
 			<MovieList title="Action Movies" getUrl={tmdbReqs.getActionMovies} />

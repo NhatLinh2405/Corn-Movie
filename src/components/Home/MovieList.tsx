@@ -12,10 +12,11 @@ import "swiper/css/free-mode";
 interface IProps {
 	title: string;
 	getUrl: string;
+	isTv?: boolean;
 	isLargeRow?: boolean;
 }
 
-export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
+export default function MovieList({ title, getUrl, isLargeRow, isTv }: IProps) {
 	const [movies, setMovies] = useState<[]>([]);
 	const img_url = "https://image.tmdb.org/t/p/original";
 
@@ -29,7 +30,7 @@ export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 
 	return (
 		<div className="ml-10 text-white">
-			<h2 className="my-5">{title}</h2>
+			<h2 className="mt-12 mb-5">{title}</h2>
 			<div className="flex">
 				<Swiper
 					slidesPerView={isLargeRow ? 5 : 6}
@@ -56,7 +57,7 @@ export default function MovieList({ title, getUrl, isLargeRow }: IProps) {
 										<>
 											<Link
 												to={
-													movie.media_type === "tv"
+													isTv || movie.media_type === "tv"
 														? `/tv/${movie.id}`
 														: `/movie/${movie.id}`
 												}

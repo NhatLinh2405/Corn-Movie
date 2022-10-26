@@ -14,8 +14,17 @@ const tmdbReqs = {
 	getRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
 	getDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
 	getActionMovies: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
+	getAnimationMovies: `/discover/movie?api_key=${API_KEY}&with_genres=16`,
+
+	getVideos: (id: string, category: string) =>
+		`/${category}/${id}/videos?api_key=${API_KEY}&language=en-US`,
+
+	getCredit: (id: string, category: string) =>
+		`/${category}/${id}/credits?api_key=${API_KEY}&language=en-US`,
 
 	getDetail: (id: string, category: string) => `/${category}/${id}?api_key=${API_KEY}&language=en-US`,
+
+	search: (keyword: string) => ` /search/multi?api_key=${API_KEY}&language=en-US&query=${keyword}`,
 };
 
 export default tmdbReqs;
