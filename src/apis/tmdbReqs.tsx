@@ -16,6 +16,12 @@ const tmdbReqs = {
 	getActionMovies: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
 	getAnimationMovies: `/discover/movie?api_key=${API_KEY}&with_genres=16`,
 
+	getReviews: (id: string, category: string) =>
+		`/${category}/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`,
+
+	getSimilar: (id: string, category: string) =>
+		`/${category}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`,
+
 	getVideos: (id: string, category: string) =>
 		`/${category}/${id}/videos?api_key=${API_KEY}&language=en-US`,
 

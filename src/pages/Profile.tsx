@@ -11,13 +11,14 @@ export default function Profile() {
 		<>
 			<div className="flex-col h-screen bg-black flex-center">
 				<Header />
-				<div className="mx-auto space-y-10">
-					<h1 className="text-5xl font-bold text-white">Edit Profile</h1>
+				<div className="mx-auto space-y-10 text-white">
+					<h1 className="text-5xl font-bold">Edit Profile</h1>
+					<h1 className="underline underline-offset-8">Hình đang test k thích đổi ok chưa</h1>
 					<div className="flex space-x-10">
 						<img src={Linh} alt="Linh" className="w-40 h-40 rounded-xl" />
 						<div className="flex flex-col space-y-10">
-							<h1 className="px-10 py-4 text-2xl font-bold bg-gray-200 rounded-xl">
-								{user?.email}
+							<h1 className="px-10 py-4 text-2xl font-bold text-black bg-gray-200 rounded-xl">
+								{user && user.email}
 							</h1>
 							<div className="text-white">
 								<div className="flex-center">

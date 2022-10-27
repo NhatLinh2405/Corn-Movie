@@ -1,7 +1,7 @@
 import ReactPaginate from "react-paginate";
 import tmdbReqs from "../apis/tmdbReqs";
 import { IMovie } from "../interfaces";
-import axiosClient from "../apis/axiosClient";
+import { axiosClient, apiConfig } from "../apis/axiosClient";
 import { useEffect, useState } from "react";
 import backgroundMovie from "../assets/bgContact.jpg";
 import { Link } from "react-router-dom";
@@ -42,9 +42,9 @@ export default function Movies() {
 	const currentPageData = movies.slice(0, offset + 20).map((movie: IMovie) => (
 		<Link key={movie.id} className="overflow-hidden" to={`/movie/${movie.id}`}>
 			<div
-				className={`relative hover:scale-105 cursor-pointer h-80 w-full`}
+				className={`relative hover:scale-105 cursor-pointer h-96 w-full`}
 				style={{
-					backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
+					backgroundImage: `url(${apiConfig.imgURL}/${movie.backdrop_path})`,
 					objectFit: "contain",
 					backgroundSize: "cover",
 					backgroundPosition: "center",
@@ -81,8 +81,8 @@ export default function Movies() {
 					value={keyword}
 				/>
 			</form>
-			<div className="px-10 py-5 ">
-				<div className="grid grid-cols-5 gap-3 mb-8">{currentPageData}</div>
+			<div className="p-10">
+				<div className="grid grid-cols-5 gap-5 mb-8">{currentPageData}</div>
 				<div className="p-5 text-white flex-center">
 					<ReactPaginate
 						breakLabel="..."

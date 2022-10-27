@@ -1,10 +1,9 @@
 import { RiErrorWarningLine } from "react-icons/ri";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { useState, useEffect } from "react";
-import Button from "../Button";
-import axiosClient from "../../apis/axiosClient";
+import { axiosClient, apiConfig } from "../../apis/axiosClient";
 import tmdbReqs from "../../apis/tmdbReqs";
-
+import Button from "../Button";
 import { IMovie } from "../../interfaces";
 
 export default function Banner() {
@@ -18,12 +17,12 @@ export default function Banner() {
 		getMovie();
 	}, []);
 
-	const URL_IMG = movie && `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
+	const banner_URL = movie && `${apiConfig.imgURL}/${movie.backdrop_path}`;
 	return (
 		<div
 			className={`relative w-full h-[700px]`}
 			style={{
-				backgroundImage: `url(${URL_IMG})`,
+				backgroundImage: `url(${banner_URL})`,
 				objectFit: "contain",
 				backgroundSize: "cover",
 				backgroundPosition: "center",

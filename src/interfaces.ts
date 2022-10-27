@@ -11,6 +11,11 @@ export interface IMovie {
 	vote_average: number;
 	genres: [];
 	release_date: string;
+	homepage: string;
+	first_air_date: string;
+	last_air_date: string;
+	number_of_episodes: number;
+	seasons: [];
 }
 
 export interface ISocial {
@@ -51,4 +56,19 @@ export interface ICasts {
 	name: string;
 	id: string;
 	profile_path: string;
+}
+
+export interface IReviews {
+	id: string;
+	author: string;
+	content: string;
+	updated_at: string;
+}
+
+export interface ISeason {
+	episode_count: number;
+	id: number;
+	name: string;
+	poster_path: string;
+	season_number: number;
 }

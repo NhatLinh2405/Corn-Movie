@@ -5,64 +5,83 @@ import { AiFillUnlock, AiOutlineMail } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import {
+	signInWithPopup,
+	FacebookAuthProvider,
+	GoogleAuthProvider,
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
+} from "firebase/auth";
+import toast from "react-hot-toast";
 
 export default function Login() {
-	const signInWithFacebook = () => {
-		const provider = new FacebookAuthProvider();
-		provider.addScope("user_birthday");
-		provider.setCustomParameters({
-			display: "popup",
-		});
-		signInWithPopup(auth, provider)
-			.then((result) => {
-				console.log(result);
-			})
-			.catch((error) => {
-				// const email = error.customData.email;
-				// const credential = FacebookAuthProvider.credentialFromError(error);
-				console.log(error.message);
-				// console.log(email);
-				// console.log(credential);
-			});
-	};
-
 	const emailRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const navigate = useNavigate();
 
-	const register = (e: React.MouseEvent) => {
-		e.preventDefault();
-		emailRef.current &&
-			passwordRef.current &&
-			auth
-				.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
-				.then((authUser) => {
-					console.log(authUser);
-					navigate("/");
-				})
-				.catch((error) => {
-					alert(error.message);
-				});
-	};
-
-	const signIn = (e: React.MouseEvent) => {
-		e.preventDefault();
-		auth.signInWithEmailAndPassword(emailRef.current!.value, passwordRef.current!.value)
-			.then((authUser) => {
-				console.log(authUser);
+	const googleSignIn = (): void => {
+		const provider = new GoogleAuthProvider();
+		signInWithPopup(auth, provider)
+			.then((res) => {
+				toast.success("Đăng nhập Google thành công");
 				navigate("/");
 			})
-			.catch((error) => {
-				alert(error.message);
+			.catch((err) => {
+				toast.error(err.code);
 			});
 	};
+
+	// fb đăng nhập lỗi với ng khác
+	const signInWithFacebook = (): void => {
+		const provider = new FacebookAuthProvider();
+		provider.addScope("user_birthday");
+		auth.languageCode = "it";
+		provider.setCustomParameters({
+			display: "popup",
+		});
+
+		signInWithPopup(auth, provider)
+			.then((res) => {
+				toast.success("Đăng nhập thành công");
+				navigate("/");
+			})
+			.catch((err) => {
+				toast.error(err.code);
+			});
+	};
+
+	const signIn = (e: React.MouseEvent): void => {
+		e.preventDefault();
+		signInWithEmailAndPassword(auth, emailRef.current!.value, passwordRef.current!.value)
+			.then((res) => {
+				toast.success("Đăng nhập thành công");
+				navigate("/");
+			})
+			.catch((err) => {
+				toast.error(err.code);
+			});
+	};
+
+	const register = (e: React.MouseEvent) => {
+		e.preventDefault();
+		if (emailRef.current && passwordRef.current) {
+			createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+				.then((res) => {
+					toast.success("Đăng nhập thành công");
+					navigate("/");
+				})
+				.catch((err) => {
+					toast.error(err.code);
+				});
+		}
+	};
+
 	return (
 		<div className="text-white flex-center">
-			<div className="w-[480px] rounded-2xl relative p-10 bg-[rgba(255,255,255,.5)] before:content-[''] before:absolute before:bg-[rgba(255,255,255,.15)] before:inset-0 before:-rotate-6 before:z-[-1]">
+			<div className="w-[480px] rounded-2xl relative py-8 px-10 bg-[rgba(255,255,255,.5)] before:content-[''] before:absolute before:bg-[rgba(255,255,255,.15)] before:inset-0 before:-rotate-6 before:z-[-1]">
 				<div className="my-8 text-center">
 					<h1 className="mb-5 font-semibold">Sign In</h1>
-					<div className="">Please login to use platform</div>
+					<div>Please login to use platform</div>
 				</div>
 				<form action="" className="flex flex-col gap-6">
 					<div className="relative text-black">
@@ -108,13 +127,13 @@ export default function Login() {
 							to="/"
 							onClick={signInWithFacebook}
 						>
-							<BsFacebook />
+							<BsFacebook className="text-3xl" />
 						</Link>
 						<Link
 							className="flex-center w-[50px] h-[50px] rounded-full bg-black text-white hover:scale-110"
 							to="/"
 						>
-							<FcGoogle />
+							<FcGoogle onClick={googleSignIn} className="text-3xl" />
 						</Link>
 					</div>
 				</div>

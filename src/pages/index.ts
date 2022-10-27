@@ -7,4 +7,5 @@ import Detail from "./Detail";
 import OurStory from "./OurStory";
 import Login from "./Login";
 import Profile from "./Profile";
+
 export { Home, Contact, Movies, NotFound, TvSeries, Detail, OurStory, Login, Profile };

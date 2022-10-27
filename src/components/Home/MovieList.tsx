@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosClient from "../../apis/axiosClient";
+import { axiosClient, apiConfig } from "../../apis/axiosClient";
 
 import { IMovie } from "../../interfaces";
 import { Link } from "react-router-dom";
@@ -18,7 +18,6 @@ interface IProps {
 
 export default function MovieList({ title, getUrl, isLargeRow, isTv }: IProps) {
 	const [movies, setMovies] = useState<[]>([]);
-	const img_url = "https://image.tmdb.org/t/p/original";
 
 	useEffect(() => {
 		const getData = async () => {
@@ -64,13 +63,9 @@ export default function MovieList({ title, getUrl, isLargeRow, isTv }: IProps) {
 											>
 												<img
 													className={`${
-														isLargeRow
-															? "w-72 h-96 object-cover"
-															: "w-72 h-80 object-cover"
-													}  hover:scale-105 cursor-pointer`}
-													src={`${img_url}${
-														isLargeRow ? movie.poster_path : movie.poster_path
-													}`}
+														isLargeRow ? "w-72 h-96 " : "w-72 h-80 "
+													}  hover:scale-105 cursor-pointer object-cover`}
+													src={`${apiConfig.imgURL}${movie.poster_path}`}
 													alt={movie.name}
 												/>
 											</Link>

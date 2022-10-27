@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./app/store";
 import { logout, login, selectUser } from "./reducers/userSlice";
 import { Home, NotFound, Contact, TvSeries, Movies, Detail, OurStory, Profile } from "./pages";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 	const dispatch = useAppDispatch();
@@ -23,27 +24,29 @@ function App() {
 			}
 		});
 		return subscribe;
-		// subscribe();
 	}, [dispatch]);
 
 	return (
 		<>
+			<Toaster position="top-center" reverseOrder={true} />
 			{!user ? (
 				<OurStory />
 			) : (
-				<Routes>
-					<>
-						<Route path="/" element={<Layout />}>
-							<Route path="/" element={<Home />} />
-							<Route path="tv-series" element={<TvSeries />} />
-							<Route path="movies" element={<Movies />} />
-							<Route path=":category/:id" element={<Detail />} />
-						</Route>
-						<Route path="profile" element={<Profile />} />
-						<Route path="contact" element={<Contact />} />
-						<Route path="*" element={<NotFound />} />
-					</>
-				</Routes>
+				<>
+					<Routes>
+						<>
+							<Route path="/" element={<Layout />}>
+								<Route path="/" element={<Home />} />
+								<Route path="tv-series" element={<TvSeries />} />
+								<Route path="movies" element={<Movies />} />
+								<Route path=":category/:id" element={<Detail />} />
+							</Route>
+							<Route path="profile" element={<Profile />} />
+							<Route path="contact" element={<Contact />} />
+							<Route path="*" element={<NotFound />} />
+						</>
+					</Routes>
+				</>
 			)}
 		</>
 	);
