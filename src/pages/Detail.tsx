@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { axiosClient, apiConfig } from "./../apis/axiosClient";
 import { IMovie } from "../interfaces";
 import tmdbReqs from "./../apis/tmdbReqs";
-import Homepage from "../assets/homepage.gif";
+import Homepage from "../assets/video/homepage.gif";
 import { Cast, Video, Similar, Review, Sessions } from "../components/Detail";
 
 export default function Detail() {

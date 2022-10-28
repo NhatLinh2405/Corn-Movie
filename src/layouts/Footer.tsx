@@ -60,12 +60,12 @@ export default function Footer() {
 						<p>Jobs</p>
 						<p>Cookie Preferences</p>
 					</div>
-					<div className="my-5 space-y-5 text-xl ">
+					<div className="my-5 space-y-5 text-xl param">
 						<p>Gift Cards</p>
 						<p>Terms of Use</p>
 						<p>Corporate Information</p>
 					</div>
-					<div className="my-5 space-y-5 text-xl">
+					<div className="my-5 space-y-5 text-xl param">
 						<p>Media Center</p>
 						<p>Privacy</p>
 						<p>Contact Us</p>

@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Logo from "../assets/popcorn.png";
-import Avatar from "../assets/avatar.gif";
+import Avatar from "../assets/video/avatar.gif";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 

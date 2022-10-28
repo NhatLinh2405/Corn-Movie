@@ -5,6 +5,7 @@ import { axiosClient, apiConfig } from "../apis/axiosClient";
 import { useEffect, useState } from "react";
 import backgroundMovie from "../assets/bgContact.jpg";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Movies() {
 	const [movies, setMovies] = useState<[]>([]);
@@ -12,12 +13,12 @@ export default function Movies() {
 	const [totalPage, setTotalPage] = useState<number>(0);
 
 	// search by keywords
-	const [keyword, setKeyword] = useState<string>("");
+	// const [keyword, setKeyword] = useState<string>("");
+	// const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	// 	setKeyword(e.target.value);
+	// };
+	// console.log(keyword);
 
-	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setKeyword(e.target.value);
-	};
-	console.log(keyword);
 	useEffect(() => {
 		const getData = async () => {
 			const res = await axiosClient.get(tmdbReqs.getTrendingMovie, {
@@ -75,10 +76,11 @@ export default function Movies() {
 			>
 				<input
 					type="text"
+					readOnly
 					className="w-full h-12 px-4 bg-white rounded-lg shadow-pop focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
 					placeholder="Search for a movie, tv series, person..."
-					onChange={handleSearchChange}
-					value={keyword}
+					onFocus={() => toast.error("This feature is not available yet")}
+					// onChange={() => toast.error("This didn't work.")}
 				/>
 			</form>
 			<div className="p-10">

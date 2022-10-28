@@ -72,3 +72,14 @@ export interface ISeason {
 	poster_path: string;
 	season_number: number;
 }
+
+export interface IIntroduce {
+	id: number;
+	title: string;
+	content: string;
+	img: string;
+	video?: string;
+	mobile?: boolean;
+	poster?: string;
+	download?: string;
+}
