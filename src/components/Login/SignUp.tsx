@@ -25,7 +25,7 @@ export default function SignUp() {
 	};
 	return (
 		<div>
-			<div className="my-8 text-center">
+			<div className="my-5 text-center">
 				<h1 className="mb-5 font-semibold">Sign Up</h1>
 				<div>Please login to use platform</div>
 			</div>

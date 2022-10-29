@@ -14,11 +14,11 @@ export default function Sessions({ movie }: IProps) {
 		<div>
 			{movie.seasons.length < 5 ? (
 				<>
-					<div className="grid grid-cols-4 gap-5">
+					<div className="grid grid-cols-4 gap-5 md:grid-cols-2">
 						{movie.seasons?.map((s: ISeason) => (
 							<div key={s.id} className="overflow-hidden">
 								<div
-									className={`relative hover:scale-105 cursor-pointer h-96 w-full`}
+									className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-72 w-full`}
 									style={{
 										backgroundImage: `url(${apiConfig.imgURL}/${s.poster_path})`,
 										objectFit: "contain",
@@ -39,9 +39,22 @@ export default function Sessions({ movie }: IProps) {
 					</div>
 				</>
 			) : (
-				<div className="pr-14">
+				<div className="pr-10 overflow-hidden xl:pr-0">
 					<Swiper
-						slidesPerView={4}
+						breakpoints={{
+							639: {
+								width: 639,
+								slidesPerView: 3,
+							},
+							1023: {
+								width: 1023,
+								slidesPerView: 4,
+							},
+							1279: {
+								width: 1279,
+								slidesPerView: 5,
+							},
+						}}
 						spaceBetween={10}
 						slidesPerGroup={1}
 						loop={true}
@@ -51,7 +64,7 @@ export default function Sessions({ movie }: IProps) {
 							disableOnInteraction: false,
 						}}
 						modules={[Autoplay, FreeMode]}
-						className="mySwiper"
+						className="overflow-hidden mySwiper"
 					>
 						{movie.seasons?.map((s: ISeason) => (
 							<SwiperSlide
@@ -64,7 +77,7 @@ export default function Sessions({ movie }: IProps) {
 							>
 								<div key={s.id} className="overflow-hidden">
 									<div
-										className={`relative hover:scale-105 cursor-pointer h-96 w-full`}
+										className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-96 w-full`}
 										style={{
 											backgroundImage: `url(${apiConfig.imgURL}/${s.poster_path})`,
 											objectFit: "contain",

@@ -26,8 +26,24 @@ export default function Similar() {
 		<div className="mb-10">
 			<h1 className="my-5">Similar</h1>
 			<Swiper
-				slidesPerView={6}
-				spaceBetween={20}
+				breakpoints={{
+					320: {
+						slidesPerView: 2,
+					},
+					639: {
+						width: 639,
+						slidesPerView: 3,
+					},
+					1023: {
+						width: 1023,
+						slidesPerView: 5,
+					},
+					1279: {
+						width: 1279,
+						slidesPerView: 6,
+					},
+				}}
+				spaceBetween={10}
 				slidesPerGroup={1}
 				loop={true}
 				loopFillGroupWithBlank={true}
@@ -46,7 +62,7 @@ export default function Similar() {
 						>
 							<Link to={category === "tv" ? `/tv/${item.id}` : `/movie/${item.id}`}>
 								<div
-									className={`relative hover:scale-105 cursor-pointer h-80 w-full`}
+									className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-80 w-full`}
 									style={{
 										backgroundImage: `url(${apiConfig.imgURL}/${item.poster_path})`,
 										objectFit: "contain",

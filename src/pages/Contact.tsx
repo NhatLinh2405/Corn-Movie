@@ -44,19 +44,19 @@ export default function Contact() {
 	];
 
 	return (
-		<div className="h-screen bg-cover bg-bgContact">
-			<div className="w-full h-screen z-[1] bg-[rgba(0,0,0,0.4)]">
+		<div className="h-full min-h-screen bg-cover bg-bgContact">
+			<div className="h-screen z-[1] bg-[rgba(0,0,0,0.4)]">
 				<Header />
-				<div className="text-white flex-center">
-					<div className="mt-36 flex-center">
+				<div className="flex-center">
+					<div className="text-white mt-36 flex-center lg:px-5 sm:px-2">
 						{info.map((item: IInfo) => (
-							<div className="flex-center" key={item.name}>
+							<div className="flex-center md:flex-col" key={item.name}>
 								<img
 									className="object-cover border-2 rounded-full shadow-pop border-slate-200 w-[300px]"
 									src={item.img}
 									alt={item.name}
 								/>
-								<div className="ml-10">
+								<div className="ml-10 md:ml-0">
 									<div className="my-5 space-y-5">
 										<h2 className="text-center underline underline-offset-8 decoration-primary">
 											{item.name}
@@ -72,7 +72,7 @@ export default function Contact() {
 												key={item.id}
 											>
 												<img
-													className="cursor-pointer text-9xl hover:scale-110"
+													className="cursor-pointer text-9xl hover:scale-110 md:hover:scale-100"
 													src={item.img}
 													alt={item.name}
 												/>

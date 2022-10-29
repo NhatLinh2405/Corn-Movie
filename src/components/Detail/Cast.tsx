@@ -19,7 +19,7 @@ export default function Cast() {
 	}, [id, category]);
 
 	return (
-		<div className="grid grid-cols-5 gap-5 overflow-hidden">
+		<div className="grid grid-cols-5 gap-5 pr-10 overflow-hidden xl:pr-0 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
 			{cast &&
 				cast.slice(0, 10).map((actor: ICasts) => (
 					<a
@@ -27,10 +27,10 @@ export default function Cast() {
 						href={`https://www.themoviedb.org/person/${actor.id}`}
 						target="_blank"
 						rel="noreferrer"
-						className="w-auto h-auto overflow-hidden"
+						className="overflow-hidden"
 					>
 						<img
-							className="w-full hover:scale-105 h-60 rounded-2xl"
+							className="object-cover w-full mx-auto hover:scale-105 md:hover:scale-100 h-60 lg:h-72 rounded-2xl"
 							src={`${apiConfig.imgURL}/${actor.profile_path}`}
 							alt=""
 						/>

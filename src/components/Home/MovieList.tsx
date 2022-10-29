@@ -32,7 +32,23 @@ export default function MovieList({ title, getUrl, isLargeRow, isTv }: IProps) {
 			<h2 className="mt-12 mb-5">{title}</h2>
 			<div className="flex">
 				<Swiper
-					slidesPerView={isLargeRow ? 5 : 6}
+					breakpoints={{
+						320: {
+							slidesPerView: 2,
+						},
+						639: {
+							width: 639,
+							slidesPerView: 3,
+						},
+						1023: {
+							width: 1023,
+							slidesPerView: 5,
+						},
+						1279: {
+							width: 1279,
+							slidesPerView: isLargeRow ? 5 : 6,
+						},
+					}}
 					spaceBetween={10}
 					slidesPerGroup={1}
 					loop={true}

@@ -35,7 +35,7 @@ export default function TvSeries() {
 	const currentPageData = movies.slice(0, offset + 20).map((movie: IMovie) => (
 		<Link key={movie.id} className="overflow-hidden" to={`/tv/${movie.id}`}>
 			<div
-				className={`relative cursor-pointer h-96 w-full hover:scale-105`}
+				className={`relative cursor-pointer h-96 w-full hover:scale-105 md:hover:scale-100`}
 				style={{
 					backgroundImage: `url(${apiConfig.imgURL}/${movie.backdrop_path})`,
 					objectFit: "contain",
@@ -63,17 +63,19 @@ export default function TvSeries() {
 				alt={backgroundMovie}
 			/>
 			<div className="p-10">
-				<div className="grid grid-cols-5 gap-5 mb-8">{currentPageData}</div>
+				<div className="grid grid-cols-5 gap-5 mb-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+					{currentPageData}
+				</div>
 				<div className="p-5 text-white flex-center">
 					<ReactPaginate
 						breakLabel="..."
-						className="flex space-x-5"
-						activeLinkClassName="border-2 border-white py-2 px-4 rounded-lg"
-						nextLabel="next >"
+						className="flex space-x-5 sm:space-x-4"
+						activeLinkClassName="border-2 border-white py-2 sm:px-2 px-4 rounded-lg"
+						nextLabel=">"
 						onPageChange={handlePageClick}
 						pageRangeDisplayed={5}
 						pageCount={pageCount}
-						previousLabel="< previous"
+						previousLabel="<"
 					/>
 				</div>
 			</div>

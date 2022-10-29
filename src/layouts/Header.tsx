@@ -18,16 +18,16 @@ export default function Header() {
 	}, []);
 	return (
 		<div
-			className={`fixed top-0 w-full z-[3] shadow-pop  ${
+			className={`fixed top-0 w-full inset-x-0 z-[3] shadow-pop  ${
 				show === true || location.pathname === "/profile" ? "bg-black" : "bg-transparent"
 			} `}
 		>
-			<div className="justify-between px-24 py-2 flex-center-y">
+			<div className="justify-between px-24 py-2 lg:px-16 md:px-8 sm:px-2 flex-center-y">
 				<Link to="/">
 					<img src={Logo} alt="" className="object-contain w-20 cursor-pointer" />
 				</Link>
 				<Navbar />
-				<Link to="/profile">
+				<Link to="/profile" className="md:hidden">
 					<img src={Avatar} alt="" className="w-16 cursor-pointer" />
 				</Link>
 			</div>

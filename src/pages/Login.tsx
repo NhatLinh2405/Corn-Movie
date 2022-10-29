@@ -43,8 +43,8 @@ export default function Login() {
 	};
 
 	return (
-		<div className="overflow-hidden text-white flex-center">
-			<div className="w-[480px] rounded-2xl relative py-8 px-10 bg-[rgba(255,255,255,.5)] before:content-[''] before:absolute before:bg-[rgba(255,255,255,.15)] before:inset-0 before:-rotate-6 before:z-[-1]">
+		<div className="text-white flex-center sm:px-2 sm:pt-5">
+			<div className="w-[480px] rounded-2xl py-4 px-10 sm:px-4 bg-[rgba(255,255,255,.5)]">
 				{logIn ? (
 					<>
 						<SignUp />
@@ -61,7 +61,6 @@ export default function Login() {
 					<>
 						<SignIn />
 						<div className="mt-5 text-center">
-							Don't have an account? {""}
 							<span
 								className="text-lg underline cursor-pointer underline-offset-8"
 								onClick={() => setLogIn(true)}
@@ -73,16 +72,16 @@ export default function Login() {
 				)}
 				<div className="flex flex-col gap-6 mt-8 text-center ">
 					<h3 className="text-lg font-normal tracking-widest uppercase">Other Sign in Platform</h3>
-					<div className="gap-4 flex-center">
+					<div className="gap-4 space-x-10 flex-center">
 						<Link
-							className="flex-center w-[50px] h-[50px] rounded-full bg-black text-white hover:scale-110"
+							className="flex-center w-[50px] h-[50px] rounded-full bg-black text-white hover:scale-110 md:hover:scale-100"
 							to="/"
 							onClick={signInWithFacebook}
 						>
 							<BsFacebook className="text-3xl" />
 						</Link>
 						<Link
-							className="flex-center w-[50px] h-[50px] rounded-full bg-black text-white hover:scale-110"
+							className="flex-center w-[50px] h-[50px] rounded-full bg-black text-white hover:scale-110 md:hover:scale-100"
 							to="/"
 						>
 							<FcGoogle onClick={googleSignIn} className="text-3xl" />

@@ -53,41 +53,47 @@ export default function Introduce() {
 					<div
 						className={`${
 							item.id % 2 === 0 && "flex-row-reverse"
-						} justify-between py-14 px-36 flex-center-y`}
+						} justify-between py-14 px-36 xl:px-14 lg:px-10 lg:flex-col sm:px-5 flex-center-y`}
 					>
-						<div className="w-1/2">
-							<h1 className="mb-10 text-5xl font-bold">{item.title}</h1>
-							<p className="text-2xl">{item.content}</p>
+						<div className="w-1/2 lg:w-full lg:text-center">
+							<h1 className="mb-10 text-5xl font-bold lg:text-4xl md:text-3xl">{item.title}</h1>
+							<p className="text-2xl lg:text-xl md:text-lg">{item.content}</p>
 						</div>
-						<div className="relative w-1/2">
+						<div className="w-1/2 md:w-full">
 							{item.video ? (
 								<>
-									<img src={item.img} alt="" />
-									<video
-										className="absolute w-[444px] right-[90px] top-[99px] object-cover"
-										autoPlay
-										loop
-										muted
-									>
-										<source src={item.video} type="video/mp4" />
-									</video>
+									<div className="relative">
+										<img src={item.img} className="w-full" alt="" />
+										<video
+											className="w-[440px] xl:w-[390px] object-cover lg:w-[340px] md:w-[500px] absolute-center sm:w-[430px] top-[48%]"
+											autoPlay
+											loop
+											muted
+										>
+											<source src={item.video} type="video/mp4" />
+										</video>
+									</div>
 								</>
 							) : (
 								<>
 									{item.mobile ? (
 										<>
-											<img src={mobile} alt="" />
-											<div className="absolute justify-between w-2/3 px-8 py-3 bg-black border-2 left-[100px] bottom-10 rounded-2xl flex-center-y border-slate-200">
-												<img src={item.poster} className="w-20" alt="" />
-												<div>
-													<p>Stranger Things</p>
-													<p className="text-blue-400">Downloading...</p>
+											<div className="relative">
+												<img src={mobile} className="w-full" alt="" />
+												<div className="absolute justify-between w-2/3 px-8 py-3 bg-black border-2 absolute-center top-[80%] rounded-2xl flex-center-y sm:w-5/6 sm:px-4 border-slate-200">
+													<img src={item.poster} className="w-14" alt="" />
+													<div>
+														<p className="sm:text-sm">Stranger Things</p>
+														<p className="text-blue-400 sm:text-sm">
+															Downloading...
+														</p>
+													</div>
+													<img
+														className="w-1/6 text-white"
+														src={item.download}
+														alt=""
+													/>
 												</div>
-												<img
-													className="w-1/6 text-white"
-													src={item.download}
-													alt=""
-												/>
 											</div>
 										</>
 									) : (

@@ -48,22 +48,22 @@ export default function Questions() {
 	];
 
 	return (
-		<div className="flex-col w-full px-4 py-10 text-white border-t-8 border-[#222] flex-center">
-			<h1 className="py-10 text-5xl font-medium ">Frequently Asked Questions</h1>
+		<div className="flex-col w-full px-4 md:px-10 sm:px-2 py-10 text-white border-t-8 border-[#222] flex-center">
+			<h1 className="py-10 text-5xl font-medium md:text-3xl sm:text-2xl">Frequently Asked Questions</h1>
 			{Questions.map((item) => (
 				<Disclosure key={item.id}>
 					{({ open }) => (
 						<>
 							<div className="w-full my-3 max-w-4xl p-4 mx-auto bg-[#303030] rounded-2xl">
 								<Disclosure.Button className="justify-between w-full px-4 py-2 text-sm font-medium text-left flex-center-y ">
-									<span className="text-3xl ">{item.question}</span>
+									<span className="text-3xl md:text-2xl sm:text-sm">{item.question}</span>
 									{open ? (
 										<BsArrowUpCircle className="text-3xl" />
 									) : (
 										<BsArrowDownCircle className="text-3xl" />
 									)}
 								</Disclosure.Button>
-								<Disclosure.Panel className="p-4 pb-2 my-3 ml-4 text-2xl text-black bg-white rounded-xl">
+								<Disclosure.Panel className="p-4 pb-2 my-3 ml-4 text-2xl text-black bg-white sm:text-sm md:text-xl rounded-xl">
 									<p className="my-3">{item.answer1}</p>
 									<p className="my-3">{item.answer2}</p>
 								</Disclosure.Panel>

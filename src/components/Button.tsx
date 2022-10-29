@@ -9,7 +9,7 @@ export default function Button({ className, name, Icon, link, href }: IButton) {
 	              shadow-md tracking-wider`}
 			to={href}
 		>
-			{Icon && <Icon className="mr-3 text-4xl transition-none" />}
+			{Icon && <Icon className="mr-3 text-4xl transition-none sm:mr-1 sm:text-3xl" />}
 			<p>{name}</p>
 		</Link>
 	) : (
@@ -20,7 +20,7 @@ export default function Button({ className, name, Icon, link, href }: IButton) {
 	               `}
 		>
 			<p>{name}</p>
-			{Icon && <Icon className="mr-3 text-4xl transition-none" />}
+			{Icon && <Icon className="mr-3 text-4xl transition-none sm:text-3xl" />}
 		</button>
 	);
 }

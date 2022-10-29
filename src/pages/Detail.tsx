@@ -39,18 +39,18 @@ export default function Detail() {
 							boxShadow: "inset 0 0 0 2000px rgba(0, 0, 0, 0.5)",
 						}}
 					/>
-					<div className="py-10 px-14">
-						<div className="flex justify-between space-x-10 ">
+					<div className="py-10 px-14 xl:px-4">
+						<div className="flex justify-between space-x-10 xl:space-x-0 xl:flex-col xl:items-center">
 							<img
-								className="hover:scale-105 w-[400] h-[550px] object-cover rounded-2xl shadow-pop"
+								className="hover:scale-105 md:hover:scale-100 w-[400px] xl:w-[300px] xl:h-[450px] h-[550px] object-cover rounded-2xl shadow-pop"
 								src={URL}
 								alt=""
 							/>
-							<div className="w-3/4">
-								<h1 className="mb-16 text-6xl font-extrabold shadow-xl">
+							<div className="w-3/4 xl:w-full">
+								<h1 className="mb-16 text-6xl font-extrabold shadow-xl xl:mt-16 md:text-5xl xl:text-center">
 									{movie.name || movie.title || movie.original_name}
 								</h1>
-								<div className="flex my-5 space-x-8">
+								<div className="my-5 space-x-8 flex-center md:flex-col md:space-x-0 md:space-y-10">
 									{movie.genres.map((genre: { name: string }) => (
 										<a
 											key={genre.name}
@@ -58,14 +58,14 @@ export default function Detail() {
 											rel="noreferrer"
 											href={`https://en.wikipedia.org/wiki/${genre.name}`}
 										>
-											<span className="px-5 py-2 text-xl font-bold text-center bg-transparent border-2 border-white cursor-pointer hover:scale-105 rounded-2xl ">
+											<span className="px-5 py-2 text-xl font-bold text-center bg-transparent border-2 border-white cursor-pointer hover:scale-105 md:hover:scale-100 rounded-2xl ">
 												{genre.name}
 											</span>
 										</a>
 									))}
 								</div>
-								<h5 className="my-10 text-lg text-white flex-center-y">
-									Home Page:
+								<h5 className="my-10 text-lg text-white flex-center-y xl:justify-center">
+									Home
 									<a
 										className="ml-4 font-normal"
 										href={movie.homepage}
@@ -75,7 +75,7 @@ export default function Detail() {
 										<img src={Homepage} alt="" className="w-20 cursor-pointer" />
 									</a>
 								</h5>
-								<h5 className="my-10 text-lg text-white ">
+								<h5 className="my-10 text-lg text-white xl:text-center">
 									IMDB Score
 									<span className="ml-4 font-normal">{movie.vote_average.toFixed(1)}</span>
 								</h5>
@@ -87,7 +87,7 @@ export default function Detail() {
 										</span>
 									</h5>
 								) : (
-									<>
+									<div className="xl:text-center">
 										<div>
 											<h5 className="my-10 text-lg">
 												First Air Date:
@@ -117,9 +117,9 @@ export default function Detail() {
 											</span>
 										</h5>
 										<Sessions movie={movie} />
-									</>
+									</div>
 								)}
-								<p className="my-10 text-lg text-white ">{movie.overview}</p>
+								<p className="my-10 text-lg text-white md:w-full">{movie.overview}</p>
 								<Cast />
 							</div>
 						</div>
