@@ -28,7 +28,7 @@ export default function MovieList({ title, getUrl, isLargeRow, isTv }: IProps) {
 	}, [getUrl]);
 
 	return (
-		<div className="ml-10 text-white">
+		<div className="ml-10 text-white md:ml-2">
 			<h2 className="mt-12 mb-5">{title}</h2>
 			<div className="flex">
 				<Swiper

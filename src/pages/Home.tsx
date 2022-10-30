@@ -1,5 +1,4 @@
-import Banner from "../components/Home/Banner";
-import MovieList from "../components/Home/MovieList";
+import { Banner, MovieList } from "../components/Home";
 import tmdbReqs from "./../apis/tmdbReqs";
 
 export default function Home() {

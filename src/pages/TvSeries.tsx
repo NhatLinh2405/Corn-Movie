@@ -5,24 +5,45 @@ import { axiosClient, apiConfig } from "../apis/axiosClient";
 import { useEffect, useState } from "react";
 import backgroundMovie from "../assets/bgContact.jpg";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function TvSeries() {
 	const [movies, setMovies] = useState<[]>([]);
 	const [page, setPage] = useState<number>(1);
 	const [totalPage, setTotalPage] = useState<number>(0);
+	const [keyword, setKeyword] = useState<string>("");
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setKeyword(e.target.value);
+	};
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (keyword === "") {
+			toast.error("Please enter a keyword");
+		} else {
+			const data = async () => {
+				const response = await axiosClient.get(tmdbReqs.searchTv + keyword);
+				setMovies(response.data.results);
+				setTotalPage(response.data.total_pages);
+			};
+			data();
+		}
+	};
 
 	useEffect(() => {
-		const getData = async () => {
-			const res = await axiosClient.get(tmdbReqs.getTrendingTvSeries, {
-				params: {
-					page: page,
-				},
-			});
-			setMovies(res.data.results);
-			setTotalPage(res.data.total_pages);
-		};
-		getData();
-	}, [page]);
+		if (keyword === "") {
+			const getData = async () => {
+				const res = await axiosClient.get(tmdbReqs.getTrendingTvSeries, {
+					params: {
+						page: page,
+					},
+				});
+				setMovies(res.data.results);
+				setTotalPage(res.data.total_pages);
+			};
+			getData();
+		}
+	}, [page, keyword]);
 
 	const handlePageClick = ({ selected }: { selected: number }): void => {
 		setPage(selected + 1);
@@ -62,6 +83,15 @@ export default function TvSeries() {
 				className="h-[70vh] w-full object-cover bg-[rgba(0,0,0,0.4)] brightness-75"
 				alt={backgroundMovie}
 			/>
+			<form action="" className="flex-col w-full mt-5 flex-center" onSubmit={handleSubmit}>
+				<input
+					type="text"
+					className="w-1/3 px-4 bg-white rounded-lg lg:w-1/2 md:w-2/3 sm:w-5/6 h-14 shadow-pop focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+					placeholder="Search for tv series..."
+					onChange={handleSearchChange}
+					value={keyword}
+				/>
+			</form>
 			<div className="p-10">
 				<div className="grid grid-cols-5 gap-5 mb-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
 					{currentPageData}

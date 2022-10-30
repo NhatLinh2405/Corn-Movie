@@ -11,26 +11,40 @@ export default function Movies() {
 	const [movies, setMovies] = useState<[]>([]);
 	const [page, setPage] = useState<number>(1);
 	const [totalPage, setTotalPage] = useState<number>(0);
+	const [keyword, setKeyword] = useState<string>("");
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setKeyword(e.target.value);
+	};
 
-	// search by keywords
-	// const [keyword, setKeyword] = useState<string>("");
-	// const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	setKeyword(e.target.value);
-	// };
-	// console.log(keyword);
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (keyword === "") {
+			toast.error("Please enter a keyword");
+		} else {
+			const data = async () => {
+				const response = await axiosClient.get(tmdbReqs.searchMovie + keyword);
+				console.log(response.data);
+				setMovies(response.data.results);
+				setTotalPage(response.data.total_pages);
+			};
+			data();
+		}
+	};
 
 	useEffect(() => {
-		const getData = async () => {
-			const res = await axiosClient.get(tmdbReqs.getTrendingMovie, {
-				params: {
-					page: page,
-				},
-			});
-			setMovies(res.data.results);
-			setTotalPage(res.data.total_pages);
-		};
-		getData();
-	}, [page]);
+		if (keyword === "") {
+			const getData = async () => {
+				const res = await axiosClient.get(tmdbReqs.getTrendingMovie, {
+					params: {
+						page: page,
+					},
+				});
+				setMovies(res.data.results);
+				setTotalPage(res.data.total_pages);
+			};
+			getData();
+		}
+	}, [page, keyword]);
 
 	const handlePageClick = ({ selected }: { selected: number }): void => {
 		setPage(selected + 1);
@@ -70,17 +84,13 @@ export default function Movies() {
 				className="h-[70vh] w-full object-cover bg-[rgba(0,0,0,0.4)] brightness-75"
 				alt=""
 			/>
-			<form
-				action=""
-				className="absolute flex-col w-1/2 space-y-3 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 flex-center"
-			>
+			<form action="" className="flex-col w-full mt-5 flex-center" onSubmit={handleSubmit}>
 				<input
 					type="text"
-					readOnly
-					className="w-full h-12 px-4 bg-white rounded-lg shadow-pop focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-					placeholder="Search for a movie, tv series, person..."
-					onFocus={() => toast.error("This feature is not available yet")}
-					// onChange={() => toast.error("This didn't work.")}
+					className="w-1/3 px-4 bg-white rounded-lg lg:w-1/2 md:w-2/3 sm:w-5/6 h-14 shadow-pop focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+					placeholder="Search for tv series..."
+					onChange={handleSearchChange}
+					value={keyword}
 				/>
 			</form>
 			<div className="p-10">

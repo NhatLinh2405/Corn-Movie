@@ -50,7 +50,7 @@ export default function Navbar() {
 					leaveFrom="translate-x-0 opacity-100"
 					leaveTo="translate-x-full opacity-0"
 				>
-					<Popover.Panel className="fixed z-10 w-full max-w-[200px] right-0 top-0 h-full bg-black shadow-popup overflow-y-auto p-4 space-y-4 ">
+					<Popover.Panel className="fixed z-10 w-full max-w-[200px] right-0 top-0 h-full bg-black shadow-popup overflow-y-auto p-4 pl-8 space-y-4 ">
 						<div className="flex flex-col mt-10 space-y-5 text-black gap-y-2">
 							<NavLink
 								to="/"

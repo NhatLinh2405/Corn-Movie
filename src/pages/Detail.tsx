@@ -50,7 +50,7 @@ export default function Detail() {
 								<h1 className="mb-16 text-6xl font-extrabold shadow-xl xl:mt-16 md:text-5xl xl:text-center">
 									{movie.name || movie.title || movie.original_name}
 								</h1>
-								<div className="flex my-5 space-x-8 md:flex-col xl:justify-center md:space-x-0 md:space-y-10">
+								<div className="flex my-5 space-x-8 md:flex-col md:items-center xl:justify-center md:space-x-0 md:space-y-10">
 									{movie.genres.map((genre: { name: string }) => (
 										<a
 											key={genre.name}
