@@ -21,13 +21,13 @@ export default function Video() {
 	return (
 		<>
 			<h1 className="mb-5">Videos</h1>
-			<div className="grid content-center grid-cols-2 gap-10 mb-10 lg:grid-cols-1">
+			<div className="grid content-center grid-cols-1 gap-10 mb-10">
 				{videos &&
 					videos.slice(0, 4).map((video: IVideos) => (
 						<div key={video.id}>
 							<p className="mb-5 text-xl font-medium">{video.name}</p>
 							<iframe
-								className="w-full h-[700px] md:h-[500px]"
+								className="w-full h-[600px] md:h-[500px]"
 								src={`${apiConfig.videoURL}/${video.key}`}
 								title="YouTube video player"
 								frameBorder="0"

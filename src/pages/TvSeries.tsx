@@ -23,8 +23,12 @@ export default function TvSeries() {
 		} else {
 			const data = async () => {
 				const response = await axiosClient.get(tmdbReqs.searchTv + keyword);
-				setMovies(response.data.results);
-				setTotalPage(response.data.total_pages);
+				if (response.data.results.length === 0) {
+					toast.error("No results found");
+				} else {
+					setMovies(response.data.results);
+					setTotalPage(response.data.total_pages);
+				}
 			};
 			data();
 		}

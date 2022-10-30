@@ -23,9 +23,12 @@ export default function Movies() {
 		} else {
 			const data = async () => {
 				const response = await axiosClient.get(tmdbReqs.searchMovie + keyword);
-				console.log(response.data);
-				setMovies(response.data.results);
-				setTotalPage(response.data.total_pages);
+				if (response.data.results.length === 0) {
+					toast.error("No results found");
+				} else {
+					setMovies(response.data.results);
+					setTotalPage(response.data.total_pages);
+				}
 			};
 			data();
 		}
