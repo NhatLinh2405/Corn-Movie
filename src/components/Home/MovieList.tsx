@@ -9,6 +9,7 @@ import { FreeMode, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 
+import LazyLoad from "./../LazyLoad";
 interface IProps {
 	title: string;
 	getUrl: string;
@@ -77,12 +78,12 @@ export default function MovieList({ title, getUrl, isLargeRow, isTv }: IProps) {
 														: `/movie/${movie.id}`
 												}
 											>
-												<img
+												<LazyLoad
+													alt={movie.name}
+													src={`${apiConfig.imgURL}${movie.poster_path}`}
 													className={`${
 														isLargeRow ? "w-72 h-96 " : "w-72 h-80 "
 													}  hover:scale-105 cursor-pointer object-cover`}
-													src={`${apiConfig.imgURL}${movie.poster_path}`}
-													alt={movie.name}
 												/>
 											</Link>
 										</>

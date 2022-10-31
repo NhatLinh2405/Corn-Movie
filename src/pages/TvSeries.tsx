@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import backgroundMovie from "../assets/bgContact.jpg";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import LazyLoad from "../components/LazyLoad";
 
 export default function TvSeries() {
 	const [movies, setMovies] = useState<[]>([]);
@@ -46,6 +47,7 @@ export default function TvSeries() {
 				setTotalPage(res.data.total_pages);
 			};
 			getData();
+			page === 1 && window.scrollTo(0, 0);
 		}
 	}, [page, keyword]);
 
@@ -58,22 +60,17 @@ export default function TvSeries() {
 	const pageCount = Math.ceil(totalPage / 10);
 
 	const currentPageData = movies.slice(0, offset + 20).map((movie: IMovie) => (
-		<Link key={movie.id} className="overflow-hidden" to={`/tv/${movie.id}`}>
-			<div
-				className={`relative cursor-pointer h-96 w-full hover:scale-105 md:hover:scale-100`}
-				style={{
-					backgroundImage: `url(${apiConfig.imgURL}/${movie.backdrop_path})`,
-					objectFit: "contain",
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-					backgroundRepeat: "no-repeat",
-					boxShadow: "inset 0 -50px 0 0 rgba(0, 0, 0, 0.5)",
-				}}
-			>
+		<Link key={movie.id} className="overflow-hidden" to={`/movie/${movie.id}`}>
+			<div className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-96 w-full`}>
+				<LazyLoad
+					className={`hover:scale-105 object-cover h-96 w-full`}
+					alt=""
+					src={`${apiConfig.imgURL}/${movie.backdrop_path}`}
+				/>
 				<div className="w-[50px] h-[50px] rounded-full flex-center shadow-pop bg-primary absolute left-3 top-2">
 					<span className="font-bold text-white">{movie.vote_average.toFixed(1)}</span>
 				</div>
-				<div className="absolute inset-x-0 space-y-2 text-center text-white bottom-3">
+				<div className="absolute inset-x-0 bottom-0 h-[15%] flex-center space-y-2 text-center text-white bg-bgCard">
 					<p className="font-medium">{movie.name || movie.title || movie.original_name}</p>
 				</div>
 			</div>

@@ -11,6 +11,7 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "#ff3231",
+				bgCard: "rgba(0, 0, 0, 0.5)",
 			},
 			backgroundImage: {
 				bannerImg: "url('./assets/banner.jpg')",
