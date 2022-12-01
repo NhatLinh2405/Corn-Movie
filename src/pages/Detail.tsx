@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { axiosClient, apiConfig } from "./../apis/axiosClient";
-import { IMovie } from "../interfaces";
-import tmdbReqs from "./../apis/tmdbReqs";
+import { useParams } from "react-router-dom";
 import Homepage from "../assets/video/homepage.gif";
-import { Cast, Video, Similar, Review, Sessions } from "../components/Detail";
+import { Cast, Review, Sessions, Similar, Video } from "../components/Detail";
+import { IMovie } from "../interfaces";
+import { apiConfig, axiosClient } from "./../apis/axiosClient";
+import tmdbReqs from "./../apis/tmdbReqs";
 
 export default function Detail() {
 	const { category, id } = useParams<{ id: string; category: string }>();
@@ -80,7 +80,7 @@ export default function Detail() {
 									<span className="ml-4 font-normal">{movie.vote_average.toFixed(1)}</span>
 								</h5>
 								{category === "movie" ? (
-									<h5 className="my-10 text-lg text-white ">
+									<h5 className="my-10 text-lg text-white xl:text-center ">
 										Release Date:
 										<span className="ml-4 font-normal">
 											{movie.release_date.slice(0, 10).split("-").reverse().join("-")}

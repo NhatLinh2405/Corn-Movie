@@ -1,10 +1,10 @@
-import { RiErrorWarningLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
-import { useState, useEffect } from "react";
-import { axiosClient, apiConfig } from "../../apis/axiosClient";
+import { RiErrorWarningLine } from "react-icons/ri";
+import { apiConfig, axiosClient } from "../../apis/axiosClient";
 import tmdbReqs from "../../apis/tmdbReqs";
-import Button from "../Button";
 import { IMovie } from "../../interfaces";
+import Button from "../Button";
 
 export default function Banner() {
 	const [movie, setMovie] = useState<IMovie>();
@@ -46,7 +46,7 @@ export default function Banner() {
 								name="Watch Now"
 								Icon={AiFillPlayCircle}
 								link
-								href={`/a`}
+								href={movie.media_type === "tv" ? `/tv/${movie.id}` : `/movie/${movie.id}`}
 								className="bg-white hover:border-2 hover:border-white hover:bg-transparent hover:text-white sm:text-sm"
 							/>
 							<Button
@@ -54,7 +54,7 @@ export default function Banner() {
 								Icon={RiErrorWarningLine}
 								link
 								href={movie.media_type === "tv" ? `/tv/${movie.id}` : `/movie/${movie.id}`}
-								className="text-white bg-transparent border-2 border-white hover:bg-red-600 hover:text-white sm:text-sm"
+								className="text-white bg-transparent border-2 border-white hover:bg-white hover:text-black sm:text-sm"
 							/>
 						</div>
 					</>

@@ -1,8 +1,8 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { Autoplay, FreeMode } from "swiper";
-import { IMovie } from "../../interfaces";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { apiConfig } from "../../apis/axiosClient";
+import { IMovie } from "../../interfaces";
 import { ISeason } from "./../../interfaces";
 
 interface IProps {

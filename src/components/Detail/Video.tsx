@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { axiosClient, apiConfig } from "../../apis/axiosClient";
+import { useParams } from "react-router-dom";
+import { apiConfig, axiosClient } from "../../apis/axiosClient";
 import tmdbReqs from "../../apis/tmdbReqs";
 import { IVideos } from "../../interfaces";
 
@@ -21,13 +21,13 @@ export default function Video() {
 	return (
 		<>
 			<h1 className="mb-5">Videos</h1>
-			<div className="grid content-center grid-cols-1 gap-10 mb-10">
+			<div className="space-y-10">
 				{videos &&
 					videos.slice(0, 4).map((video: IVideos) => (
 						<div key={video.id}>
 							<p className="mb-5 text-xl font-medium">{video.name}</p>
 							<iframe
-								className="w-full h-[600px] md:h-[500px]"
+								className="w-full h-[700px] md:h-[500px]"
 								src={`${apiConfig.videoURL}/${video.key}`}
 								title="YouTube video player"
 								frameBorder="0"

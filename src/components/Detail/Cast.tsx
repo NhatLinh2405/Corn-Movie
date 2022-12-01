@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { axiosClient, apiConfig } from "../../apis/axiosClient";
+import { useParams } from "react-router-dom";
+import { apiConfig, axiosClient } from "../../apis/axiosClient";
 import tmdbReqs from "../../apis/tmdbReqs";
 import { ICasts } from "../../interfaces";
+import LazyLoad from "../LazyLoad";
 
 export default function Cast() {
 	const { category, id } = useParams<{ id: string; category: string }>();
@@ -27,14 +28,14 @@ export default function Cast() {
 						href={`https://www.themoviedb.org/person/${actor.id}`}
 						target="_blank"
 						rel="noreferrer"
-						className="overflow-hidden"
+						className="overflow-hidden text-center "
 					>
-						<img
-							className="object-cover w-full mx-auto hover:scale-105 md:hover:scale-100 h-60 lg:h-72 rounded-2xl"
+						<LazyLoad
 							src={`${apiConfig.imgURL}/${actor.profile_path}`}
 							alt=""
+							className="object-cover w-full hover:scale-105 md:hover:scale-100 rounded-2xl"
 						/>
-						<h1 className="my-4 text-xl font-bold text-center">{actor.name}</h1>
+						<h1 className="my-4 text-xl font-bold ">{actor.name}</h1>
 					</a>
 				))}
 		</div>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { axiosClient, apiConfig } from "../../apis/axiosClient";
+import { apiConfig, axiosClient } from "../../apis/axiosClient";
 
-import { IMovie } from "../../interfaces";
 import { Link } from "react-router-dom";
+import { IMovie } from "../../interfaces";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Autoplay } from "swiper";
+import { Autoplay, FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import LazyLoad from "./../LazyLoad";
 interface IProps {
