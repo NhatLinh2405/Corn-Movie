@@ -1,12 +1,12 @@
-import ReactPaginate from "react-paginate";
-import tmdbReqs from "../apis/tmdbReqs";
-import { IMovie } from "../interfaces";
-import { axiosClient, apiConfig } from "../apis/axiosClient";
 import { useEffect, useState } from "react";
-import backgroundMovie from "../assets/bgContact.jpg";
-import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
+import { apiConfig, axiosClient } from "../apis/axiosClient";
+import tmdbReqs from "../apis/tmdbReqs";
+import backgroundMovie from "../assets/bgContact.jpg";
 import LazyLoad from "../components/LazyLoad";
+import { IMovie } from "../interfaces";
 
 export default function TvSeries() {
 	const [movies, setMovies] = useState<[]>([]);
@@ -60,7 +60,7 @@ export default function TvSeries() {
 	const pageCount = Math.ceil(totalPage / 10);
 
 	const currentPageData = movies.slice(0, offset + 20).map((movie: IMovie) => (
-		<Link key={movie.id} className="overflow-hidden" to={`/movie/${movie.id}`}>
+		<Link key={movie.id} className="overflow-hidden" to={`/tv/${movie.id}`}>
 			<div className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-96 w-full`}>
 				<LazyLoad
 					className={`hover:scale-105 object-cover h-96 w-full`}
