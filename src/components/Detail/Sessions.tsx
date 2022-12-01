@@ -18,7 +18,7 @@ export default function Sessions({ movie }: IProps) {
 						{movie.seasons?.map((s: ISeason) => (
 							<div key={s.id} className="overflow-hidden">
 								<div
-									className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-72 w-full`}
+									className={`relative hover:scale-105 md:hover:scale-100 cursor-pointer h-96 w-full`}
 									style={{
 										backgroundImage: `url(${apiConfig.imgURL}/${s.poster_path})`,
 										objectFit: "contain",
