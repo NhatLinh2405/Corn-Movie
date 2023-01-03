@@ -19,6 +19,10 @@ module.exports = {
 				bgContact: "url('./assets/bgContact.jpg')",
 				bgLogin: "url('./assets/bgLogin.jpg')",
 			},
+			maxWidth: {
+				"8xl": "88rem",
+				"9xl": "96rem",
+			},
 			boxShadow: {
 				pop: "0 .5rem 1.5rem rgba(0,0,0,.1)",
 			},
