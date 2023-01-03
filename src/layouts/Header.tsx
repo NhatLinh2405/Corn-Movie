@@ -1,8 +1,8 @@
-import Navbar from "../components/Navbar";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/popcorn.png";
 import Avatar from "../assets/video/avatar.gif";
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Header() {
 	const [show, setShow] = useState<boolean>(false);
@@ -18,7 +18,7 @@ export default function Header() {
 	}, []);
 	return (
 		<div
-			className={`fixed top-0 w-full inset-x-0 z-[3] shadow-pop  ${
+			className={`fixed container top-0 inset-x-0 z-[3] shadow-pop  ${
 				show === true || location.pathname === "/profile" ? "bg-black" : "bg-transparent"
 			} `}
 		>
